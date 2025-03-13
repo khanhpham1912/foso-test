@@ -1,5 +1,9 @@
+// components
 import { BlogCard, CommunityBanner, Filter, Intro } from "@/components/blog";
-import { GridList } from "@/components/common";
+import { Pagination } from "@/components/common";
+import Image from "next/image";
+
+// models
 import { Blog, EBlogCate } from "@/models/blog";
 
 const fakeBlogs: Blog[] = [
@@ -55,15 +59,32 @@ export default function Home() {
         <div className="flex flex-col flex-3/4 gap-7">
           <span className="font-extrabold text-4xl">Tất cả bài viết</span>
           <CommunityBanner />
-
-          <GridList data={fakeBlogs}>
-            {(blog) => <BlogCard blog={blog} key={blog.id} />}
-          </GridList>
-          <div>pagination</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {fakeBlogs.map((blog) => (
+              <BlogCard blog={blog} key={blog.id} />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col flex-1/4">
+        <div className="flex flex-col flex-1/4 gap-7">
           <Filter />
+          <Image
+            src={"/banner1.png"}
+            alt="Banner 1"
+            height={650}
+            width={366}
+            className="cursor-pointer"
+          />
+          <Image
+            src={"/banner2.png"}
+            alt="Banner 2"
+            height={650}
+            width={366}
+            className="cursor-pointer"
+          />
         </div>
+      </div>
+      <div className="mx-auto max-w-7xl w-full">
+        <Pagination />
       </div>
     </div>
   );

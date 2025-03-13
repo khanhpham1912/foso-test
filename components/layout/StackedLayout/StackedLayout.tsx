@@ -6,10 +6,8 @@ export const StackedLayout = ({ children }: PropsWithChildren) => {
     <div className="bg-background relative flex h-screen flex-col overflow-hidden">
       <Header />
 
-      <main className="flex flex-grow flex-col h-full">
-        <div className="flex flex-col grow h-full overflow-auto">
-          {children}
-        </div>
+      <main className="flex flex-grow flex-col h-full min-h-[calc(100vh-113.41px)]">
+        {children}
       </main>
     </div>
   );

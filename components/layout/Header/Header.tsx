@@ -1,9 +1,12 @@
+// icons
 import { ArrowUpRightIcon, ChevronDownIcon } from "@heroicons/react/16/solid";
-import Image from "next/image";
+
+// components
+import Image from "next/image ";
 
 export const Header = () => {
   return (
-    <header className="sticky flex items-center px-4 py-6">
+    <header className="flex items-center px-4 py-6">
       <div className="min-w-0 flex-1 flex items-center mx-auto bg-white shadow-md rounded-full w-full max-w-6xl">
         <nav className="flex items-center justify-between px-6 py-3 mx-auto gap-16">
           {/* Logo */}

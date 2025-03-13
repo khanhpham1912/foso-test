@@ -25,21 +25,11 @@ interface BlogCardProps {
   blog: Blog;
 }
 
-const LearMore = ({ href }: { href: string }) => {
-  const router = useRouter();
-
-  return (
-    <div
-      className="flex justify-start items-center gap-7 text-foreground-500 cursor-pointer"
-      onClick={() => router.push(href)}
-    >
-      <span className="font-semibold">Khám phá thêm</span>
-      <ArrowRightIcon className="size-6" />
-    </div>
-  );
-};
-
 export const BlogCard = ({ blog }: BlogCardProps) => {
+  const router = useRouter();
+  const handleNavigate = () => {
+    router.push("#");
+  };
   return (
     <div className="flex flex-col gap-6 w-md">
       <Image
@@ -50,7 +40,8 @@ export const BlogCard = ({ blog }: BlogCardProps) => {
           width: "100%",
           height: "auto",
         }}
-        className="rounded-3xl"
+        className="rounded-3xl cursor-pointer"
+        onClick={handleNavigate}
       />
       <div className="flex flex-col gap-4">
         <Tag label={blog.tag} />
@@ -68,7 +59,13 @@ export const BlogCard = ({ blog }: BlogCardProps) => {
             content={displayNumber(blog.readTime)}
           />
         </div>
-        <LearMore href={"#"} />
+        <div
+          className="flex justify-start items-center gap-7 text-foreground-500 cursor-pointer"
+          onClick={handleNavigate}
+        >
+          <span className="font-semibold">Khám phá thêm</span>
+          <ArrowRightIcon className="size-6" />
+        </div>
       </div>
     </div>
   );
