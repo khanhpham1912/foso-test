@@ -1,103 +1,63 @@
-import Image from "next/image";
+import { BlogCard } from "@/components/blog";
+import { GridList } from "@/components/common";
+import { Blog, EBlogCate } from "@/models/blog";
+
+const fakeBlogs: Blog[] = [
+  {
+    title: "Xu hướng thiết kế website năm 2025",
+    id: 1,
+    tag: EBlogCate.DES_WEBSITE,
+    publishDate: new Date("2025-03-01"),
+    readTime: 8,
+  },
+  {
+    title: "Cách tối ưu UX/UI cho ứng dụng mobile",
+    id: 2,
+    tag: EBlogCate.DES_APP_MOBILE,
+    publishDate: new Date("2025-02-15"),
+    readTime: 6,
+  },
+  {
+    title: "Quản lý sản xuất hiệu quả với phần mềm ERP",
+    id: 3,
+    tag: EBlogCate.PROD_MANAGEMENT,
+    publishDate: new Date("2025-01-20"),
+    readTime: 10,
+  },
+  {
+    title: "Bí quyết tăng doanh số với phần mềm quản lý bán hàng",
+    id: 4,
+    tag: EBlogCate.SALES_MANAGEMENT,
+    publishDate: new Date("2025-03-05"),
+    readTime: 7,
+  },
+  {
+    title: "FOSO đạt giải thưởng công nghệ xuất sắc 2025",
+    id: 5,
+    tag: EBlogCate.FOSO_ACHIEVEMENT,
+    publishDate: new Date("2025-02-10"),
+    readTime: 5,
+  },
+  {
+    title: "Cập nhật mới nhất về FOSO trong năm 2025",
+    id: 6,
+    tag: EBlogCate.FOSO_NEWS,
+    publishDate: new Date("2025-03-08"),
+    readTime: 4,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="flex grow overflow-y-auto flex-col items-center h-full">
+      <GridList data={fakeBlogs}>
+        {(blog) => <BlogCard blog={blog} key={blog.id} />}
+      </GridList>
     </div>
+    // <div className="flex gap-4 overflow-auto h-[200px]">
+    //   {fakeBlogs.map((blog, index) => (
+    //     <BlogCard key={index} blog={blog} />
+    //   ))}
+    // </div>
   );
 }
