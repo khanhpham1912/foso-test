@@ -2,7 +2,7 @@
 import { ArrowUpRightIcon, ChevronDownIcon } from "@heroicons/react/16/solid";
 
 // components
-import Image from "next/image ";
+import Image from "next/image";
 
 export const Header = () => {
   return (
