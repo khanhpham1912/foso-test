@@ -1,4 +1,4 @@
-import { BlogCard } from "@/components/blog";
+import { BlogCard, CommunityBanner, Filter, Intro } from "@/components/blog";
 import { GridList } from "@/components/common";
 import { Blog, EBlogCate } from "@/models/blog";
 
@@ -49,15 +49,22 @@ const fakeBlogs: Blog[] = [
 
 export default function Home() {
   return (
-    <div className="flex grow overflow-y-auto flex-col items-center h-full">
-      <GridList data={fakeBlogs}>
-        {(blog) => <BlogCard blog={blog} key={blog.id} />}
-      </GridList>
+    <div className="app-content">
+      <Intro />
+      <div className="flex gap-4 mx-auto max-w-7xl">
+        <div className="flex flex-col flex-3/4 gap-7">
+          <span className="font-extrabold text-4xl">Tất cả bài viết</span>
+          <CommunityBanner />
+
+          <GridList data={fakeBlogs}>
+            {(blog) => <BlogCard blog={blog} key={blog.id} />}
+          </GridList>
+          <div>pagination</div>
+        </div>
+        <div className="flex flex-col flex-1/4">
+          <Filter />
+        </div>
+      </div>
     </div>
-    // <div className="flex gap-4 overflow-auto h-[200px]">
-    //   {fakeBlogs.map((blog, index) => (
-    //     <BlogCard key={index} blog={blog} />
-    //   ))}
-    // </div>
   );
 }

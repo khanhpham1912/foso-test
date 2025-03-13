@@ -4,7 +4,7 @@ import Image from "next/image";
 export const Header = () => {
   return (
     <header className="sticky flex items-center px-4 py-6">
-      <div className="min-w-0 flex-1 flex items-center mx-auto bg-white shadow-md rounded-full w-full max-w-7xl ">
+      <div className="min-w-0 flex-1 flex items-center mx-auto bg-white shadow-md rounded-full w-full max-w-6xl">
         <nav className="flex items-center justify-between px-6 py-3 mx-auto gap-16">
           {/* Logo */}
           <Image src="/logo.png" alt="FOSO Logo" width={100} height={40} />
