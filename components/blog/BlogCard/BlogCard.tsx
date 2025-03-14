@@ -28,7 +28,7 @@ interface BlogCardProps {
 export const BlogCard = ({ blog }: BlogCardProps) => {
   const router = useRouter();
   const handleNavigate = () => {
-    router.push("#");
+    router.push("/blog");
   };
   return (
     <div className="flex flex-col gap-6 w-md">

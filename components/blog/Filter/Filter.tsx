@@ -1,3 +1,5 @@
+"use client";
+import { Search } from "@/components/common";
 import { cn } from "@/lib/classNames";
 
 const categoryList = [
@@ -15,16 +17,7 @@ export const Filter = () => {
       {/* Search Section */}
       <div>
         <h2 className="font-extrabold text-2xl mb-3">Tìm Kiếm</h2>
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Tìm kiếm bài viết"
-            className="w-full p-3 pl-4 pr-12 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-          <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-lg">
-            🔍
-          </button>
-        </div>
+        <Search onChange={() => {}} />
       </div>
 
       {/* Categories Section */}

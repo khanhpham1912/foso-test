@@ -1,11 +1,17 @@
 "use client";
-import { BlogCard, BlogDetail, ReactionReview } from "@/components/blog";
-import { Blog, EBlogCate } from "@/models/blog";
-import { ChevronRightIcon } from "@heroicons/react/16/solid";
+
+// components
+import {
+  BlogCard,
+  BlogDetail,
+  ReactionReview,
+  TableOfContents,
+} from "@/components/blog";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-// import { FaFacebookF, FaTwitter, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
+
+// models
+import { Blog, EBlogCate } from "@/models/blog";
+
 const fakeBlogs: Blog[] = [
   {
     title: "Xu hướng thiết kế website năm 2025",
@@ -50,24 +56,25 @@ const fakeBlogs: Blog[] = [
     readTime: 4,
   },
 ];
-export default function BlogPage() {
-  const [toc] = useState([
-    "Quy trình 5S là gì?",
-    "Lợi ích quy trình 5S",
-    "Tại sao doanh nghiệp nên áp dụng quy trình 5S?",
-    "Quy trình 5S gồm các bước",
-    "Các yếu tố tạo nên thành công của quy trình 5S",
-  ]);
 
+const fakeBlog: Blog = {
+  title: "Quy trình 5S là gì? Cách ứng dụng hiệu quả nên biết",
+  tag: EBlogCate.PROD_MANAGEMENT,
+  publishDate: new Date("2025-03-08"),
+  readTime: 10,
+};
+
+export default function BlogPage() {
   return (
     <div className="app-content">
-      <div className="flex gap-4 mx-auto max-w-7xl">
+      <div className="flex gap-4 mx-auto max-w-7xl mb-24">
         <div className="flex flex-col flex-3/4 gap-7">
-          <span className="font-extrabold text-4xl">Tất cả bài viết</span>
+          <span className="font-extrabold text-4xl">{fakeBlog.title}</span>
           <BlogDetail />
           <ReactionReview />
         </div>
         <div className="flex flex-col flex-1/4 gap-7">
+          <TableOfContents />
           <Image
             src={"/banner1.png"}
             alt="Banner 1"

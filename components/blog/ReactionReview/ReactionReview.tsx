@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/classNames";
 import { useState } from "react";
 
 const reactions = [
@@ -28,7 +29,7 @@ export const ReactionReview = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md text-center">
+    <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md text-center">
       <h3 className="text-lg font-semibold">Bạn thấy bài viết như thế nào?</h3>
       <p className="text-gray-500">
         {Object.values(counts).reduce((a, b) => a + b, 0)} phản hồi
@@ -38,15 +39,29 @@ export const ReactionReview = () => {
           <button
             key={reaction.id}
             onClick={() => handleReaction(reaction.id)}
-            className={`flex flex-col items-center px-4 py-2 border rounded-lg transition-all cursor-pointer ${
+            className={`flex flex-col items-center px-4 py-2 gap-1.5 border rounded-lg transition-all cursor-pointer ${
               selectedReaction === reaction.id
                 ? "border-primary"
                 : "border-transparent"
             }`}
           >
             <span className="text-2xl">{reaction.emoji}</span>
-            <span className="font-semibold text-sm">{counts[reaction.id]}</span>
-            <span className="text-xs text-gray-500">{reaction.label}</span>
+            <span
+              className={cn(
+                "font-semibold text-sm",
+                selectedReaction === reaction.id && "text-primary"
+              )}
+            >
+              {counts[reaction.id]}
+            </span>
+            <span
+              className={cn(
+                "text-sm text-gray-600",
+                selectedReaction === reaction.id && "text-primary"
+              )}
+            >
+              {reaction.label}
+            </span>
           </button>
         ))}
       </div>
