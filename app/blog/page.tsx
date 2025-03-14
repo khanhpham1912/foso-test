@@ -101,7 +101,7 @@ export default function BlogPage() {
                     { src: "/social/x.png", alt: "Twitter", href: "#" },
                     { src: "/social/linkedin.png", alt: "LinkedIn", href: "#" },
                     { src: "/social/reddit.png", alt: "Reddit", href: "#" },
-                  ].map((icon, index) => (
+                  ].map((icon) => (
                     <Link
                       key={icon.alt}
                       className="w-10 h-10 relative flex items-center justify-center rounded-xl border border-primary p-2"
